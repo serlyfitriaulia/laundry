@@ -29,10 +29,72 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    @auth
                     <ul class="navbar-nav me-auto">
+                      <li class="nav-item">
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pesanan & Layanan </a>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ url('layanan', []) }}">Data Layanan</a></li>
+                            <li><a class="dropdown-item" href="{{ url('layanan/create', []) }}">Tambah Layanan</a></li>
+                            <li>
+                              <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{{ url('pesanan', []) }}">Data Pesanan</a></li>
+                            <li><a class="dropdown-item" href="{{ url('pesanan/create', []) }}">Tambah Pesanan</a></li>
+                            <li>
+                              <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{{ url('detailpesanan', []) }}">Data Detail Pesanan</a></li>
+                            <li><a class="dropdown-item" href="{{ url('detailpesanan/create', []) }}">Tambah Detail Pesanan</a></li>
+                          </ul>
+                        </li>
+                        <li class="nav-item">
 
-                    </ul>
+          
+                        </li>
 
+                        <li class="nav-item">
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pelanggan & Pegawai</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{{ url('pelanggan', []) }}">Data Pelanggan</a></li>
+                          <li><a class="dropdown-item" href="{{ url('pelanggan/create', []) }}">Tambah Pelanggan</a></li>
+                          <li>
+                            <hr class="dropdown-divider">
+                          </li>
+                          <li><a class="dropdown-item" href="{{ url('pegawai', []) }}">Data Pegawai</a></li>
+                          <li><a class="dropdown-item" href="{{ url('pegawai/create', []) }}">Tambah Pegawai</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item">
+
+                        
+                      </li>
+
+                      <li class="nav-item">
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Antar Jemput & Pembayaran</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{{ url('antarjemput', []) }}">Data Antar Jemput</a></li>
+                          <li><a class="dropdown-item" href="{{ url('antarjemput/create', []) }}">Tambah Data Antar Jemput</a></li>
+                          <li>
+                            <hr class="dropdown-divider">
+                          </li>
+                          <li><a class="dropdown-item" href="{{ url('pembayaran', []) }}">Data Pembayaran</a></li>
+                          <li><a class="dropdown-item" href="{{ url('pembayaran/create', []) }}">Tambah Pembayaran</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item">
+
+                      </li>
+
+              </ul>
+
+                    @endauth
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
@@ -73,8 +135,13 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
-        </main>
+          @if (Session::has('pesan'))
+              <div class="alert alert-primary" role="alert">
+                  {{ Session::get('pesan') }}
+              </div>
+          @endif
+          @yield('content')
+      </main>
     </div>
 </body>
 </html>

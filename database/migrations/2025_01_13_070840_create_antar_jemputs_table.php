@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('antar_jemputs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pesanan_id')->constrained('pesanans')
-                ->onDelete('cascade')->onUpdate('cascade');
+                    ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('pegawai_id')->constrained('pegawais')
+                    ->onDelete('cascade')->onUpdate('cascade');
             $table->string('kode_antarjemput')->unique();
             $table->date('tgl_pengambilan');
             $table->date('tgl_pengantaran');
             $table->string('nama_kurir');
             $table->string('no_kurir');
-
             $table->timestamps();
-
         });
     }
 

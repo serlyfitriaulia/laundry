@@ -19,7 +19,6 @@ return new class extends Migration
             $table->date('tanggal_pesanan');
             $table->decimal('total_pesanan', 10,2);
             $table->string('status');
-
             $table->timestamps();
         });
     }

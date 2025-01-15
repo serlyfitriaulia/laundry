@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('pegawais', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('antarjemput_id')->constrained('antar_jemputs')
-                ->onDelete('cascade')->onUpdate('cascade');
             $table->string('kode_pegawai')->unique();
             $table->string('nama_pegawai');
             $table->string('jenis_kelamin');
